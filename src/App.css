@@ -7,9 +7,13 @@ html, body, #root {
 }
 
 .main-container {
-    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.418) ), url('https://hdwallpaper20.com/wp-content/uploads/2017/07/wallpaper-wp4001752.jpg');
+    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.418) ), url('https://images3.alphacoders.com/114/thumb-1920-11439.png');
     background-size: cover;
     background-position: center;
+}
+
+.title-pwa{
+    color: #fff;
 }
 
 .main-container {
@@ -55,11 +59,11 @@ p {
 }
 
 .city > sup {
-    font-size: 1.5em;
+    font-size: 0.5em;
 }
 
 .city-name {
-    font-size: 5em;
+    font-size: 3em;
 }
 
 .city-name sup {
@@ -70,13 +74,13 @@ p {
     background: #ff8c00;
 }
 
-.supp{
+/* .supp{
     padding: 0.2em 0.6em;
     margin-left: 0.2em;
     border-radius: 30px;
     color: #fff;
     background: #ff8c00;
-}
+} */
 
 .city-icon {
     margin-top: 10px;

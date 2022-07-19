@@ -15,6 +15,9 @@ function App() {
     }
   return (
     <div className="main-container">
+        <div>
+            <h1 className='title-pwa'>Ifeanyi PWA Weather app</h1>
+        </div>
       <input
         type="text"
         className="search"
