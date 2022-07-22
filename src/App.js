@@ -1,11 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import './App.css'
 import { fetchWeather } from './api/fetchWeather'
 
 function App() {
-    const [query, setQuery] = useState('');
-    const [weather, setWeather] = useState('')
+  const [supportsPWA, setSupportsPWA] = useState(false);
+  const [promptInstall, setPromptInstall] = useState(null);
+  const [query, setQuery] = useState("");
+  const [weather, setWeather] = useState("");
+
+  useEffect(() => {
+    const handler = (e) => {
+      e.preventDefault();
+      console.log("we are being triggered :D");
+      setSupportsPWA(true);
+      setPromptInstall(e);
+    };
+    window.addEventListener("beforeinstallprompt", handler);
+
+    return () => window.removeEventListener("transitionend", handler);
+  }, []);
+
+  const onClick = (evt) => {
+    evt.preventDefault();
+    if (!promptInstall) {
+      return;
+    }
+    promptInstall.prompt();
+  };
+  if (!supportsPWA) {
+    return null;
+  }
+
+
+    
     const search = async (e) => {
         if(e.key === 'Enter'){
             const data = await fetchWeather(query)
@@ -13,11 +41,24 @@ function App() {
             setQuery('');
         }
     }
+
+    
   return (
     <div className="main-container">
-        <div>
-            <h1 className='title-pwa'>Ifeanyi PWA Weather app</h1>
-        </div>
+      <div>
+        <button
+          className="link-button"
+          id="setup_button"
+          aria-label="Install app"
+          title="Install app"
+          onClick={onClick}
+        >
+          Install
+        </button>
+      </div>
+      <div>
+        <h1 className="title-pwa">Ifeanyi PWA Weather app</h1>
+      </div>
       <input
         type="text"
         className="search"
